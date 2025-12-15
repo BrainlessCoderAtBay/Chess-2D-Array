@@ -62,10 +62,20 @@ for (let y = 0; y < 8; y++){
 
                 if (!ChessArray[firstPos.row][firstPos.col] && !ChessArray[secondPos.row][secondPos.col]){
                     alert("You need to have a square with a piece in it")
+                }else if (firstPos.row === secondPos.row && firstPos.col === secondPos.col){
+                    alert("You need to select two different squares")
+                }else if (!ChessArray[firstPos.row][firstPos.col]){
+                    // first square empty
+                    alert("The first square must have a piece to move");
+
+                }else if (!ChessArray[secondPos.row][secondPos.col]){ // Checks if both squares have pieces
+                    // second square empty - move piece
+                    console.log("Moving piece to empty square");
+                    switchPositions(firstPos.row, firstPos.col, secondPos.row, secondPos.col);
+                    
+                }else{
+                    alert("Cannot move to an occupied square");
                 }
-
-                switchPositions(firstPos.row, firstPos.col, secondPos.row, secondPos.col);
-
                 // reset
                 coord = 0;
                 firstPos = null;
